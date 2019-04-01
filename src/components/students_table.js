@@ -3,6 +3,7 @@
 // if you answer yes to either one, then you need a class component instead of a functional component
 
 import React, {Component} from "react";
+import StudentRow from './student_row';
 
 
 class StudentTable extends Component{
@@ -14,11 +15,9 @@ class StudentTable extends Component{
         //const students = this.state.students;
         const studentElements = list.map((student)=>{
             return (
-                <tr key={student.id}>
-                    <td>{student.name}</td>
-                    <td>{student.course}</td>
-                    <td>{student.grade}</td>
-                </tr>
+                // <StudentRow key={student.id} name={student.name} course={student.course} grade={student.grade} />
+                // <StudentRow key={student.id} {...student}/>
+                <StudentRow delete={this.props.delete} key={student.id} {...student} />
             );
         });
 
@@ -30,6 +29,7 @@ class StudentTable extends Component{
                             <th>Name</th>
                             <th>Course</th>
                             <th>Grade</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
